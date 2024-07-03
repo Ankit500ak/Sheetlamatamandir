@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+}
+a {
+	text-decoration: none;
+}
+.container {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+p {
+	color: black;
+	font-size: 1.4rem;
+	margin-top: 5px;
+	line-height: 2.5rem;
+	font-weight: 300;
+	letter-spacing: 0.05rem;
+}
+.section-title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: black;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	text-align: center;
+}
+.section-title span {
+	color: crimson;
+}
+
+.cta {
+	display: inline-block;
+	padding: 10px 30px;
+	color: white;
+	background-color: transparent;
+	border: 2px solid crimson;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	margin-top: 30px;
+	transition: 0.3s ease;
+	transition-property: background-color, color;
+}
+.cta:hover {
+	color: white;
+	background-color: crimson;
+}
+.brand h1 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: white;
+}
+.brand h1 span {
+	color: crimson;
+}
+
+/* Header section */
+#header {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+}
+#header .header {
+	min-height: 8vh;
+	background-color: rgba(31, 30, 30, 0.24);
+	transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+	left: 0%;
+}
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding: 20px;
+	display: block;
+}
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+	color: crimson;
+}
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid white;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(0.8);
+	margin-right: 20px;
+}
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid white;
+	animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: white;
+	z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: white;
+	transition: 0.3s ease;
+	transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+	top: 8px;
+}
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+/* End Header section */
+
+/* Hero Section */
+#hero {
+	background-image: url(https://i.ibb.co/860sHKX/sheetla-mata-temple-1-768x531-1-1.jpg);
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}
+#hero::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.7;
+	z-index: -1;
+}
+#hero .hero {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 50px;
+	justify-content: flex-start;
+}
+#hero h1 {
+	display: block;
+	width: fit-content;
+	font-size: 4rem;
+	position: relative;
+	color: transparent;
+	animation: text_reveal 0.5s ease forwards;
+	animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+	animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+	animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+	animation: text_reveal_name 0.5s ease forwards;
+	animation-delay: 3s;
+}
+#hero h1 span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: crimson;
+	animation: text_reveal_box 1s ease;
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(1) span {
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(2) span {
+	animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+	animation-delay: 2.5s;
+}
+
+
+/* End Hero Section */
+
+/* Auto Slider Section */
+#auto-slider {
+  overflow: hidden;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+/* End Auto Slider Section */
+/* Services Section */
+#services .services {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#services .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#services .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#services .service-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#services .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#services .service-bottom .icon img {
+	height: 80px;
+	width: 80px;
+    border-radius: 50%;
+	margin-bottom: 20px;
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0));
+}
+#services .service-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#services .service-item p {
+	color: white;
+	text-align: left;
+}
+/* End Services Section */
+
+#Highlights .services {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#Highlights .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#Highlights .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#Highlights .service-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#Highlights .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#Highlights .service-bottom .icon img {
+	height: 80px;
+	width: 80px;
+    border-radius: 50%;
+	margin-bottom: 20px;
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0));
+}
+#Highlights .service-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#Highlights .service-item p {
+	color: white;
+	text-align: left;
+}
+/* History section */
+#History .History {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#History .History-header h1 {
+	margin-bottom: 50px;
+}
+#History .all-History {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+#History .project-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+	border-radius: 10px;
+}
+
+span{
+    color: crimson;
+}
+#History .project-info {
+	padding: 30px;
+	flex-basis: 50%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	color: white;
+}
+#History .project-info h1 {
+	font-size: 4rem;
+	font-weight: 500;
+}
+#History .project-info h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-top: 10px;
+}
+#History .project-info p {
+	color: white;
+}
+#History .project-img {
+	flex-basis: 50%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+#History .project-img:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.7;
+}
+#History .project-img img {
+	transition: 0.3s ease transform;
+}
+#History .project-item:hover .project-img img {
+	transform: scale(1.1);
+}
+/* End History section */
+
+/* About Section */
+#about .about {
+	flex-direction: column-reverse;
+	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+#about .col-left {
+	width: 250px;
+	height: 360px;
+}
+#about .col-right {
+	width: 100%;
+}
+#about .col-right h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	margin-bottom: 10px;
+}
+#about .col-right p {
+	margin-bottom: 20px;
+}
+#about .col-right .cta {
+	color: black;
+	margin-bottom: 50px;
+	padding: 10px 20px;
+	font-size: 2rem;
+}
+#about .col-left .about-img {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border: 10px solid white;
+}
+#about .col-left .about-img::after {
+	content: '';
+	position: absolute;
+	left: -33px;
+	top: 19px;
+	height: 98%;
+	width: 98%;
+	border: 7px solid crimson;
+	z-index: -1;
+}
+/* End About Section */
+
+/* contact Section */
+#contact .contact {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 90%;
+}
+#contact .contact-items {
+	/* max-width: 400px; */
+	width: 100%;
+}
+#contact .contact-item {
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 18px 0 #0000002c;
+	transition: 0.3s ease box-shadow;
+}
+#contact .contact-item:hover {
+	box-shadow: 0px 0px 5px 0 #0000002c;
+}
+#contact .icon {
+	width: 70px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+#contact .contact-info h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+#contact .contact-info h2 {
+	font-size: 1.3rem;
+	line-height: 2rem;
+	font-weight: 500;
+}
+/*End contact Section */
+
+/* Footer */
+#footer {
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer {
+	min-height: 200px;
+	flex-direction: column;
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+#footer h2 {
+	color: white;
+	font-weight: 500;
+	font-size: 1.8rem;
+	letter-spacing: 0.1rem;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#footer .social-icon {
+	display: flex;
+	margin-bottom: 30px;
+}
+#footer .social-item {
+	height: 50px;
+	width: 50px;
+	margin: 0 5px;
+}
+#footer .social-item img {
+	filter: grayscale(1);
+	transition: 0.3s ease filter;
+}
+#footer .social-item:hover img {
+	filter: grayscale(0);
+}
+#footer p {
+	color: white;
+	font-size: 1.3rem;
+}
+/* End Footer */
+
+/* Keyframes */
+@keyframes hamburger_puls {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: white;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: crimson;
+		font-weight: 500;
+	}
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.cta {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* Hero */
+	#hero h1 {
+		font-size: 7rem;
+	}
+	/* End Hero */
+
+	/* Services Section */
+	#services .service-bottom .service-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+	/* End Services Section */
+
+	/* Project */
+	#History .project-item {
+		flex-direction: row;
+	}
+	#History .project-item:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+	#History .project-item {
+		height: 400px;
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+	#History .all-History .project-info {
+		height: 100%;
+	}
+	#History .all-History .project-img {
+		height: 100%;
+	}
+	/* End Project */
+
+	/* contact  */
+	#contact .contact {
+		flex-direction: column;
+		padding: 100px 0;
+		align-items: center;
+		justify-content: center;
+		min-width: 20vh;
+	}
+	#contact .contact-items {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin: 0;
+	}
+	#contact .contact-item {
+		width: 30%;
+		margin: 0;
+		flex-direction: row;
+	}
+	#contact .contact-item .icon {
+		height: 100px;
+		width: 100px;
+	}
+	#contact .contact-item .icon img {
+		object-fit: contain;
+	}
+	#contact .contact-item .contact-info {
+		width: 100%;
+		text-align: left;
+		padding-left: 20px;
+	}
+	/* End contact  */
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1100px) {
+	/* header */
+	#header .hamburger {
+		display: none;
+	}
+	#header .nav-list ul {
+		position: initial;
+		display: block;
+		height: auto;
+		width: fit-content;
+		background-color: transparent;
+	}
+	#header .nav-list ul li {
+		display: inline-block;
+	}
+	#header .nav-list ul li a {
+		font-size: 1.8rem;
+	}
+	#header .nav-list ul a:after {
+		display: none;
+	}
+	/* End header */
+
+	#services .service-bottom .service-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+
+
+  #auto-slider {
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  height: auto;
+  height: 5;
+  margin: 80px auto;
+  background: linear-gradient(45deg, #1a1a1a, #3a3a3a);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.slider-container {
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slider-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.slider-arrow.left {
+  left: 10px;
+}
+
+.slider-arrow.right {
+  right: 10px;
+}
+.service-item{
+	min-height: 500px;
+}
+
+.gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+}
+
+.gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+		.footer {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  position: fixed;
+  
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.footer.visible {
+  transform: translateY(0);
+}
+
+.footer-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.footer-logo img {
+  max-width: 70px;
+  height: auto;
+}
+
+.footer-right {
+  flex-grow: 1;
+}
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #dc143c;
+}
+
+.footer-social {
+  margin-top: 15px;
+}
+
+.footer-social a {
+  color: #333;
+  font-size: 20px;
+  margin-right: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #dc143c;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer-content {
+    justify-content: space-between;
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-links ul {
+    display: flex;
+  }
+
+  .footer-links li {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  .footer-social {
+    margin-top: 0;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.events-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+			
+            gap: 20px;
+        }
+
+        .event-block {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            background-color: white;
+            box-shadow: 
+    20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff,
+    inset -5px -5px 10px #ffffff;
+	
+            overflow: hidden;
+            border-radius: 10px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+		
+
+        .event-block:hover {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+
+        .event {
+            display: none;
+            height: 100%;
+			
+        }
+
+        .event-header {
+            background-color: #f8f8f8;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .event-date {
+            margin: 0;
+            color: crimson;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .event img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 15px;
+            background-color: white;
+        }
+
+        .event-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .dot-container {
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.8);
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .events-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+
+	.footer {
+  background-color: #29323c;
+  color: #f5f5f5;
+  font-family: 'Montserrat', sans-serif;
+  padding: 50px 0 20px;
+  position:relative;
+  bottom:380px;
+  margin-bottom: -80px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 0 15px;
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.footer-section h2 {
+  color: crimson;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.footer p, .footer li {
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 10px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.footer span{
+	font-size: 1.7rem;
+  color: crimson;
+
+  
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer a {
+  color: #f5f5f5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: crimson;
+}
+
+.socials {
+  margin-top: 20px;
+}
+
+.socials a {
+  border: 1px solid #f5f5f5;
+  width: 35px;
+  height: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+.socials a:hover {
+  border-color: crimson;
+  color: crimson;
+}
+
+.contact span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.contact-form .contact-input {
+  background: #3a3a3a;
+  color: #f5f5f5;
+  margin-bottom: 10px;
+  line-height: 1.5rem;
+  padding: .7rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.contact-form .contact-input:focus {
+  outline: 1px solid crimson;
+}
+
+.contact-form .contact-btn {
+  float: right;
+  background: crimson;
+  color: #f5f5f5;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form .contact-btn:hover {
+  background: #a51c30;
+}
+
+.footer-bottom {
+  background: #1f2630;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 30px;
+}
+.newsletter-form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 300px;
+	
+}
+.newsletter-form input{
+	width: 60%;
+	height: 30px;
+	margin-top: 20px;
+}
+.newsletter-form button{
+	width: 120px;
+	height: 34px;
+	margin-top: 10px;
+	margin-left: 200px;
+	background-color: crimson;
+	border: 1px solid white;
+	border-radius: 4px;
+	color: white;
+	font-size: 22px;
+	box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.7);
+}
+@media screen and (max-width: 768px) {
+	
+  .footer-section {
+    flex-basis: 100%;
+  }
+  
+  .footer-section.contact-form {
+    margin-top: 20px;
+  }
+}
+ 
+
+/* End  Media Query For Desktop */
+  </style>
+  <title>Website</title>
+</head>
+
+<body>
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>S</span>heetla <span style="font-size: 20px;">༺༻</span> <span> M</span>ata</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#services" data-after="Service">Services</a></li>
+            <li><a href="#History" data-after="History">History</a></li>
+            <li><a href="#gallery" data-after="About">Galary</a></li>
+			<li><a href="#Highlights" data-after="About">Highlights</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Jai, <span></span></h1>
+        <h1>Maa <span></span></h1>
+        <h1>Sheetla <span></span></h1>
+        <a href="#History" type="button" class="cta">Book now</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="auto-slider">
+    <div class="slider-container">
+      <div class="slider">
+        <img src="https://www.explorencr.com/wp-content/uploads/2021/06/4-750x430.png">
+        <img src="https://wearegurgaon.com/wp-content/uploads/2022/04/1_sheetla-mata-mandir-gurgaon.jpg" alt="slide2">
+        <img src="https://www.touristplaces.net.in/images/pp/5/p116722.jpg" alt="Slide 3">
+        <img src="https://yometro.com/images/places/mata-sheetala-devi-temple.jpg" alt="Slide 4">
+      </div>
+      <button class="slider-arrow left">&lt;</button>
+      <button class="slider-arrow right">&gt;</button>
+    </div>
+  </section>
+  <!-- Service Section -->
+  <section id="services">
+    <div class="services container">
+      <div class="service-top">
+        <h1 class="section-title">Serv<span>i</span>ces</h1>
+        <p>Temples provide worship services, sacraments, counseling, charity, education, health camps, cultural events, festivals, community halls, libraries, lodging, youth programs, and volunteer opportunities, fostering spiritual and social well-being.!</p>
+      </div>
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="https://sheetlamatamandir.com/wp-content/uploads/2022/10/logo-image.png" /></div>
+          <h2><span>O</span>nline <span>Darshan</span></h2>
+          <p>Online darshan allows devotees to participate in virtual worship and live-streamed rituals,receive blessings, and stay connected with their temples, fostering spiritual engagement and community bonding regardless of physical distance.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://sheetlamatamandir.com/wp-content/uploads/2022/10/logo-image.png" /></div>
+          <h2><span>M</span>undan <span>ceremony</span></h2>
+          <p>A mundan ceremony involves shaving a child's hair, symbolizing cleansing and protection. It is often accompanied by rituals and prayers, marking an important cultural and religious milestone in a child's life.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://sheetlamatamandir.com/wp-content/uploads/2022/10/logo-image.png" /></div>
+          <h2><span>Bhandara:</span> A Feast of Generosity</h2>
+          <p>A bhandara is a communal feast often organized at temples, providing free meals to devotees and the needy. It embodies the spirit of charity and community, fostering unity and generosity.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://sheetlamatamandir.com/wp-content/uploads/2022/10/logo-image.png" /></div>
+          <h2> <span>V</span>olunteer <span>Opportunities</span></h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis debitis rerum, magni voluptatem sed
+            architecto placeat beatae tenetur officia quod</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Service Section -->
+
+  <!-- History Section -->
+  <section id="History">
+    <div class="History container">
+      <div class="History-header">
+        <h1 class="section-title"><span>O</span>ur <span>History</span></h1>
+      </div>
+      <div class="all-History">
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Sacred Origins</h1>
+            <h2><span>Legend of Sheetla Mata Mandir</span></h2>
+            <p>In ancient times, during the reign of King Prithviraj Chauhan, a devastating smallpox epidemic afflicted the kingdom of Gurugram. The king, distressed by the suffering of his people, prayed fervently to Goddess Durga for relief. Moved by his devotion, Goddess Durga appeared before him in the form of Sheetla Mata, the goddess known for her healing powers.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Architectural Evolution</h1>
+            <h2><span> Growth of Sheetla Mata Mandir</span></h2>
+            <p>She instructed King Prithviraj to establish a temple in her honor, where devotees could seek her blessings for protection from diseases. Following her divine guidance, the king built the first shrine dedicated to Sheetla Mata. Over time, as word spread of the goddess's miraculous interventions, the temple grew in prominence, becoming a beacon of hope and healing for people far and wide.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Cultural Significance</h1>
+            <h2><span>An Icon of Faith</span></h2>
+            <p>In ancient Gurugram, during a devastating plague, King Prithviraj Chauhan beseeched the divine for relief. In a vision, Goddess Durga appeared as Sheetla Mata, advising him to erect a temple. Today, Sheetla Mata Mandir stands as a cultural stronghold, hosting festivals like Chaitra Ashtami, where devotees gather in reverence and celebration, affirming its enduring role in community unity and spiritual renewal.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Sacred Myths</h1>
+            <h2><span>Mystical Legends of Sheetla Mata Mandir</span></h2>
+            <p>Nestled in Gurugram's heart, Sheetla Mata Mandir beckons with mystical allure. Legends whisper of King Prithviraj Chauhan's dream, where Goddess Durga, as Sheetla Mata, decreed the temple's creation during a dire epidemic. Believed to bestow miraculous healing, the temple draws pilgrims seeking solace and the blessings of divine intervention. Its ancient stones echo with stories of faith, resilience, and the enduring power of spiritual devotion.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Sacred Healing</h1>
+            <h2><span>Pilgrimage and Healing</span></h2>
+            <p>Devotees journey to Sheetla Mata Mandir seeking divine healing from ailments and protection from diseases. The temple's revered deity, Sheetla Mata, is believed to bless worshippers with health and well-being. Pilgrims offer prayers and participate in rituals, trusting in the temple's ancient reputation for miraculous recoveries.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End History Section -->
+
+  <section id="Highlights">
+    <div class="services container">
+      <div class="service-top">
+        <h1 class="section-title"><span>H</span>ighlights <span>of </span><br><span>Y</span>ear</h1>
+       
+      </div>
+<div class="events-container">
+	<div class="event-block" id="event-block-1"></div>
+	<div class="event-block" id="event-block-2"></div>
+	<div class="event-block" id="event-block-3"></div>
+</div>
+
+</div>
+</div>
+
+
+  <section id="services">
+    <div class="services container">
+      <div class="service-top">
+        <h1 class="section-title"><span>O</span>ur <span>Media</span></h1>
+      </div>
+  <div class="gallery" id="gallery"></div>
+  <div id="imageModal" class="modal">
+	  <span class="close">&times;</span>
+	  <div class="modal-content">
+		  <img src="" alt="Expanded Image" id="expandedImage" class="modal-image">
+	  </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>Us</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+1 234 567 8910</h2>
+            <h2>+1 098 765 4321</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>abcd@gmail.com</h2>
+            <h2>efgh@gmail.com</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>Sheetla Mata Road, Sector 6, Gurugram, Haryana 122001 </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+	<div class="footer-content">
+	  <div class="footer-section">
+		<img src="logo.png" alt="Sheetla Mata Temple Logo" class="footer-logo">
+		<p>Dedicated to the divine Sheetla Mata, offering spiritual solace and community support since ancient times.</p>
+	  </div>
+	  <div class="footer-section">
+		<h3><span>Quick Links</span></h3>
+		<ul>
+		  <li><a href="#hero">Home</a></li>
+		  <li><a href="#services">Services</a></li>
+		  <li><a href="#History">History</a></li>
+		  <li><a href="#about">About</a></li>
+		  <li><a href="#contact">Contact</a></li>
+		</ul>
+	  </div>
+	  <div class="footer-section">
+		<h3><span>Temple Services</span></h3>
+		<ul>
+		  <li><a href="#">Daily Aarti</a></li>
+		  <li><a href="#">Puja Booking</a></li>
+		  <li><a href="#">Prasad Offering</a></li>
+		  <li><a href="#">Donation</a></li>
+		  <li><a href="#">Community Events</a></li>
+		</ul>
+	  </div>
+	  <div class="footer-section">
+		<h3><span>Contact Us</span></h3>
+		<p><i class="fas fa-map-marker-alt"></i> Sheetla Mata Road, Sector 6, Gurugram, Haryana 122001</p>
+		<p><i class="fas fa-phone"></i> +91 124 2380983</p>
+		<p><i class="fas fa-envelope"></i> info@sheetlamata.com</p>
+	  </div>
+	  <div class="footer-section">
+		<h3>Follow Us</h3>
+		<div class="footer-social">
+		  <a href="#"><i class="fab fa-facebook"></i></a>
+		  <a href="#"><i class="fab fa-twitter"></i></a>
+		  <a href="#"><i class="fab fa-instagram"></i></a>
+		  <a href="#"><i class="fab fa-youtube"></i></a>
+		</div>
+		<h3 class="newsletter-title">Be a part of our community</h3>
+		<form class="newsletter-form">
+		  <input type="email" placeholder="Enter your email" required>
+		  <button type="submit">Join Us</button>
+		</form>
+	  </div>
+	</div>
+	<div class="footer-bottom">
+	  <p>&copy; 2024 Sheetla Mata Temple. All rights reserved.</p>
+	  <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Sitemap</a></p>
+	</div>
+  </footer>
+  <!-- End Footer -->
+
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        const modal = document.getElementById('imageModal');
+        const expandedImage = document.getElementById('expandedImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        const imageUrls = [
+            'https://media-cdn.tripadvisor.com/media/photo-s/0a/bc/a1/a8/temple-view-from-gate.jpg',
+            'https://i.timesnowhindi.com/sheetla_mata.jpg',
+            'https://lh5.googleusercontent.com/p/AF1QipOTlX8M9Wm0OxnMjazDAf_Jom3rCucroNDS-8Rr=w1080-k-no',
+            'https://static.tnnbt.in/thumb/msid-96600123,updatedat-1672321261974,width-1280,height-720,resizemode-75/96600123.jpg',
+            'https://media-cdn.tripadvisor.com/media/photo-s/0c/41/73/53/sheetla-mata-mandir-main.jpg',
+            'https://www.gosahin.com/upload/destinations/1518100873_Sheetla-mata-mandir2.jpg',
+			'https://indiano.travel/wp-content/uploads/2022/08/Sheetla-Mata-Temple-is-the-oldest-Hindu-pilgrimage.-it-is-believed-that-this-temple-in-Gurgaon-is-associated-with-the-story-of-the-Mahabharata.jpg','https://www.explorencr.com/wp-content/uploads/2021/06/4.png','https://www.japjitravel.com/blog/wp-content/uploads/2023/02/sheetla-mata-mandir-in-gurgram.jpg','https://th.bing.com/th/id/R.37a24bdd950500b51378cd3d6801cce9?rik=u4Ae6MIW%2b0wb5w&riu=http%3a%2f%2fwww.touristplaces.net.in%2fimages%2fpp%2f5%2fp116721.jpg&ehk=m%2bYTBLTYbMYdL1ajOqldpDYuXJ9yMsTCebOXooekgA8%3d&risl=&pid=ImgRaw&r=0','https://manoharlalkhattar.in/sites/default/files/press-release/4-August-2018.jpg','https://i.ytimg.com/vi/Xds33SKQDrA/maxresdefault.jpg','https://th.bing.com/th/id/R.293846ea1a82d987d91c662917ecbb96?rik=Mpjbdiyx7ZEy8g&riu=http%3a%2f%2fthespiritualindian.com%2fwp-content%2fuploads%2f2015%2f04%2fsheetla-mata-temple1.jpg&ehk=0qklEPepEKRCdr7ApAzz%2fcFFEmLXIVgeq4JPV4CRPrc%3d&risl=&pid=ImgRaw&r=0','https://i.ytimg.com/vi/9QUnokHQdfs/maxresdefault.jpg'
+        ];
+
+        imageUrls.forEach((url, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <img src="${url}" alt="Gallery Image ${index + 1}">
+                <div class="overlay">
+                    <h3>Image ${index + 1}</h3>
+                    <p>Click to expand</p>
+                </div>
+            `;
+            item.addEventListener('click', () => {
+                expandedImage.src = url;
+                modal.style.display = 'block';
+            });
+            gallery.appendChild(item);
+        });
+
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+  <script>
+
+const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
+const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
+const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
+const header = document.querySelector('.header.container');
+
+hamburger.addEventListener('click', () => {
+	hamburger.classList.toggle('active');
+	mobile_menu.classList.toggle('active');
+});
+
+document.addEventListener('scroll', () => {
+	var scroll_position = window.scrollY;
+	if (scroll_position > 250) {
+		header.style.backgroundColor = '#29323c';
+	} else {
+		header.style.backgroundColor = 'transparent';
+	}
+});
+
+menu_item.forEach((item) => {
+	item.addEventListener('click', () => {
+		hamburger.classList.toggle('active');
+		mobile_menu.classList.toggle('active');
+	});
+});
+  </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.querySelector('.slider');
+  const slides = document.querySelectorAll('.slider img');
+  const leftArrow = document.querySelector('.slider-arrow.left');
+  const rightArrow = document.querySelector('.slider-arrow.right');
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function updateSlider() {
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  }
+
+  leftArrow.addEventListener('click', prevSlide);
+  rightArrow.addEventListener('click', nextSlide);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+    } else if (e.key === 'ArrowRight') {
+      nextSlide();
+    }
+  });
+
+  // Initial update
+  updateSlider();
+});
+  </script>
+ 
+ <script>
+	const eventsData = [
+    [
+        { image: 'https://media-cdn.tripadvisor.com/media/photo-s/0a/bc/a1/a8/temple-view-from-gate.jpg', date: '2024-07-03', description: 'Temple view from gate (link 1).' },
+        { image: 'https://i.timesnowhindi.com/sheetla_mata.jpg', date: '2024-07-02', description: 'Sheetla Mata image (link 2).' },
+        { image: 'https://lh5.googleusercontent.com/p/AF1QipOTlX8M9Wm0OxnMjazDAf_Jom3rCucroNDS-8Rr=w1080-k-no', date: '2024-07-01', description: 'Google user-contributed image of temple (link 3).' }
+    ],
+    [
+        { image: 'https://static.tnnbt.in/thumb/msid-96600123,updatedat-1672321261974,width-1280,height-720,resizemode-75/96600123.jpg', date: '2024-08-03', description: 'Temple image from news article (link 4).' },
+        { image: 'https://media-cdn.tripadvisor.com/media/photo-s/0c/41/73/53/sheetla-mata-mandir-main.jpg', date: '2024-08-02', description: 'Sheetla Mata Mandir main view (link 5).' },
+        { image: 'https://www.gosahin.com/upload/destinations/1518100873_Sheetla-mata-mandir2.jpg', date: '2024-08-01', description: 'Another view of Sheetla Mata Mandir (link 6).' }
+    ],
+    [
+        { image: 'https://indiano.travel/wp-content/uploads/2022/08/Sheetla-Mata-Temple-is-the-oldest-Hindu-pilgrimage.-it-is-believed-that-this-temple-in-Gurgaon-is-associated-with-the-story-of-the-Mahabharata.jpg', date: '2024-09-03', description: 'Sheetla Mata Temple, oldest Hindu pilgrimage in Gurgaon (link 7).' },
+        { image: 'https://www.explorencr.com/wp-content/uploads/2021/06/4.png', date: '2024-09-02', description: 'Temple image from Explore NCR website (link 8).' },
+        { image: 'https://www.japjitravel.com/blog/wp-content/uploads/2023/02/sheetla-mata-mandir-in-gurgram.jpg', date: '2024-09-01', description: 'Sheetla Mata Mandir in Gurugram from travel blog (link 9).' }
+    ]
+];
+
+	function createEventBlock(blockId, events) {
+		const block = document.getElementById(blockId);
+		const eventsContainer = document.createElement('div');
+		eventsContainer.id = `${blockId}-events`;
+		const dotsContainer = document.createElement('div');
+		dotsContainer.className = 'dot-container';
+		dotsContainer.id = `${blockId}-dots`;
+
+		events.forEach((event, index) => {
+			const eventElement = document.createElement('div');
+			eventElement.className = 'event';
+			eventElement.innerHTML = `
+				<div class="event-header">
+					<p class="event-date">${event.date}</p>
+				</div>
+				<img src="${event.image}" alt="Event ${index + 1}">
+				<div class="event-info">
+					<p>${event.description}</p>
+				</div>
+			`;
+			eventsContainer.appendChild(eventElement);
+
+			const dot = document.createElement('span');
+			dot.className = 'dot';
+			dot.onclick = () => currentEvent(index + 1, blockId);
+			dotsContainer.appendChild(dot);
+		});
+
+		block.appendChild(eventsContainer);
+		block.appendChild(dotsContainer);
+
+		let eventIndex = 1;
+		showEvents(eventIndex, blockId);
+
+		setInterval(() => nextEvent(blockId), 5000);
+	}
+
+	function currentEvent(n, blockId) {
+		showEvents(n, blockId);
+	}
+
+	function showEvents(n, blockId) {
+		const events = document.querySelectorAll(`#${blockId}-events .event`);
+		const dots = document.querySelectorAll(`#${blockId}-dots .dot`);
+		
+		if (n > events.length) n = 1;
+		if (n < 1) n = events.length;
+
+		events.forEach(event => event.style.display = "none");
+		dots.forEach(dot => dot.className = dot.className.replace(" active", ""));
+
+		events[n - 1].style.display = "block";
+		dots[n - 1].className += " active";
+	}
+
+	function nextEvent(blockId) {
+		const events = document.querySelectorAll(`#${blockId}-events .event`);
+		let currentIndex = Array.from(events).findIndex(event => event.style.display === "block");
+		showEvents(currentIndex + 2, blockId);
+	}
+
+	// Create event blocks
+	createEventBlock('event-block-1', eventsData[0]);
+	createEventBlock('event-block-2', eventsData[1]);
+	createEventBlock('event-block-3', eventsData[2]);
+</script>
+
+</body>
+
+</html>
